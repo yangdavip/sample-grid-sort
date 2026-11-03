@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  build:
+    name: ${{ matrix.os }} / ${{ matrix.cxx }} / C++${{ matrix.std }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            cxx: g++
+            cc: gcc
+            std: 17
+          - os: ubuntu-latest
+            cxx: clang++
+            cc: clang
+            std: 20
+          - os: macos-latest
+            cxx: clang++
+            cc: clang
+            std: 17
+          - os: windows-latest
+            cxx: cl
+            cc: cl
+            std: 17
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure
+        shell: bash
+        run: |
+          cmake -S . -B build \
+                -DSGS_BUILD_TESTS=ON \
+                -DSGS_BUILD_EXAMPLES=ON \
+                -DSGS_BUILD_BENCHMARKS=OFF \
+                -DCMAKE_BUILD_TYPE=Release \
+                -DCMAKE_CXX_STANDARD=${{ matrix.std }} \
+                -DCMAKE_C_COMPILER=${{ matrix.cc }} \
+                -DCMAKE_CXX_COMPILER=${{ matrix.cxx }}
+
+      - name: Build
+        shell: bash
+        run: cmake --build build --config Release --parallel
+
+      - name: Test
+        shell: bash
+        run: ctest --test-dir build --output-on-failure -C Release

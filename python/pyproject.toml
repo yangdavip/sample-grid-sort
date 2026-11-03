@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sample-grid-sort"
+version = "0.1.0"
+description = "Pure-Python reference implementation of Sample-Grid Sort."
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [{ name = "Sample-Grid-Sort contributors" }]
+keywords = ["sort", "bucket-sort", "sample-sort", "algorithm"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
+
+[project.urls]
+Repository = "https://github.com/yangdavip/sample-grid-sort"
+Documentation = "https://github.com/yangdavip/sample-grid-sort/blob/main/docs/ALGORITHM.md"
+
+[tool.setuptools.packages.find]
+where = ["src"]

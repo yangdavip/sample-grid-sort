@@ -1,0 +1,7 @@
+add_executable(test_correctness test_correctness.cpp)
+target_link_libraries(test_correctness PRIVATE sample_grid_sort)
+add_test(NAME correctness COMMAND test_correctness)
+
+add_executable(test_edge_cases test_edge_cases.cpp)
+target_link_libraries(test_edge_cases PRIVATE sample_grid_sort)
+add_test(NAME edge_cases COMMAND test_edge_cases)
