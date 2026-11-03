@@ -19,6 +19,14 @@ each bucket in place.
 > data is large and reasonably well-behaved. For unknown/adversarial data,
 > `pdqsort` / `std::sort` is a safer default. See [docs/ALGORITHM.md](docs/ALGORITHM.md).
 
+## 封面 / Cover
+
+<p align="center">
+  <img src="assets/cover.png" alt="Sample-Grid-Sort cover" width="720"/>
+</p>
+
+> 封面由「矩阵生长 Matrix Growth」品牌视觉体系衍生设计，配色采用矩阵蓝 `#3D6BF0` / `#74A5F5`。可在仓库 **Settings → General → Social preview** 中上传设为社媒预览图。
+
 ## Requirements
 
 - C++17 compiler (GCC ≥ 7, Clang ≥ 6, MSVC ≥ 2019)
